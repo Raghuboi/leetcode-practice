@@ -15,7 +15,9 @@ function createCounter(n: number): () => number {
 	}
 }
 
+// time and space complexity = O(1), the concept used here is closures
+
 const counter = createCounter(10)
-counter() // 10
-counter() // 11
-counter() // 12
+console.log(counter()) // 10
+console.log(counter()) // 11
+console.log(counter()) // 12
