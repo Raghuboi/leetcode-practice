@@ -15,6 +15,13 @@ function createCounter(n: number): () => number {
 	}
 }
 
+/**
+ * alternatively,
+ * const createCounter = function(n) {
+    return ()=> n++
+};
+ */
+
 // time and space complexity = O(1), the concept used here is closures
 
 const counter = createCounter(10)
