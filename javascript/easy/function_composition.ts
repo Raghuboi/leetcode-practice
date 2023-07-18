@@ -18,5 +18,23 @@ function compose(functions: F[]): F {
 	}
 }
 
+// time complexity O(n), space complexity O(1) because it is only using a constant amount of memory to store
+// the loop variable & the current value of x
+
+/**
+ * Alternatively,
+ * function compose(functions: Func[]): Func {
+  if (functions.length === 0) {
+    return (x: any) => x;
+  }
+
+  return functions.reduceRight((prevFn, nextFn) => {
+    return (x: any) => {
+      return nextFn(prevFn(x));
+    };
+  });
+}
+ */
+
 const fn = compose([(x) => x + 1, (x) => 2 * x])
 console.log(fn(4)) // 9
