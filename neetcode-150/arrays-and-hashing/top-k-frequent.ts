@@ -1,7 +1,5 @@
 function topKFrequent(nums: number[], k: number): number[] {
-  const frequency: number[][] = Array(nums.length)
-    .fill([])
-    .map(() => []);
+  const frequency: number[][] = [];
   const map: Map<number, number> = new Map();
 
   for (let i: number = 0; i < nums.length; i++) {
@@ -11,12 +9,14 @@ function topKFrequent(nums: number[], k: number): number[] {
   }
 
   map.forEach((occurances, elem) => {
-    frequency[occurances - 1].push(elem);
+    const arr: number[] = frequency[occurances - 1] ?? [];
+    arr.push(elem);
+    frequency[occurances - 1] = arr;
   });
 
   const output: number[] = [];
   for (let i: number = frequency.length - 1; i >= 0; i--) {
-    frequency[i].forEach((v) => {
+    frequency[i]?.forEach((v) => {
       output.push(v);
       if (output.length === k) return;
     });
@@ -24,3 +24,5 @@ function topKFrequent(nums: number[], k: number): number[] {
   }
   return output;
 }
+
+console.log(topKFrequent([-1, -1], 1));
